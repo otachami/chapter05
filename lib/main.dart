@@ -29,20 +29,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int myScore = 85;
-
-  String gradeTest(int score) {
-    if (90 <= myScore) {
-      return "A";
-    } else if (80 <= myScore && myScore < 90) {
-      return "B";
-    } else if (70 <= myScore && myScore < 80) {
-      return "C";
-    } else if (60 <= myScore && myScore < 70) {
-      return "D";
-    } else {
-      return "F";
+  int calculateSumToTen() {
+    int result = 0;
+    for (int i = 1; i <= 10; i++) {
+      result += i;
     }
+    return result;
   }
 
   @override
@@ -55,9 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('私の点数は「$myScore」です。評価は「${gradeTest(myScore)}」です。')
-          ],
+          children: [Text('1から10までの合計値は「${calculateSumToTen()}」です。')],
         ),
       ),
     ); // This trailing comma makes auto-formatting nicer for build methods.
