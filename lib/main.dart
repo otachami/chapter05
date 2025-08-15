@@ -29,13 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int calculateSumToTen() {
-    int result = 0;
-    for (int i = 1; i <= 10; i++) {
-      result += i;
-    }
-    return result;
-  }
+  double _centi = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +38,22 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text('1から10までの合計値は「${calculateSumToTen()}」です。')],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('インチ'),
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  _centi = (double.tryParse(value) ?? 0) * 2.54;
+                });
+              },
+            ),
+            SizedBox(height: 25),
+            Text('結果：$_centiセンチ'),
+          ],
         ),
       ),
     ); // This trailing comma makes auto-formatting nicer for build methods.
